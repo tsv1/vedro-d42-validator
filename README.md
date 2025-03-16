@@ -1,11 +1,11 @@
-# Vedro Valera Validator
+# Vedro D42 Validator
 
-[![Codecov](https://img.shields.io/codecov/c/github/vedro-universe/vedro-valera-validator/master.svg?style=flat-square)](https://codecov.io/gh/vedro-universe/vedro-valera-validator)
-[![PyPI](https://img.shields.io/pypi/v/vedro-valera-validator.svg?style=flat-square)](https://pypi.python.org/pypi/vedro-valera-validator/)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/vedro-valera-validator?style=flat-square)](https://pypi.python.org/pypi/vedro-valera-validator/)
-[![Python Version](https://img.shields.io/pypi/pyversions/vedro-valera-validator.svg?style=flat-square)](https://pypi.python.org/pypi/vedro-valera-validator/)
+[![Codecov](https://img.shields.io/codecov/c/github/tsv1/vedro-d42-validator/master.svg?style=flat-square)](https://codecov.io/gh/tsv1/vedro-d42-validator)
+[![PyPI](https://img.shields.io/pypi/v/vedro-d42-validator.svg?style=flat-square)](https://pypi.python.org/pypi/vedro-d42-validator/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/vedro-d42-validator?style=flat-square)](https://pypi.python.org/pypi/vedro-d42-validator/)
+[![Python Version](https://img.shields.io/pypi/pyversions/vedro-d42-validator.svg?style=flat-square)](https://pypi.python.org/pypi/vedro-d42-validator/)
 
-⚠️ This package has been renamed to [vedro-d42-validator](https://pypi.org/project/vedro-d42-validator/). The [vedro-valera-validator](https://pypi.org/project/vedro-valera-validator/) package on PyPI is no longer maintained. For updates and improvements, please use [vedro-d42-validator](https://pypi.org/project/vedro-d42-validator/) going forward.
+This plugin integrates [d42 schema validation](https://d42.sh/docs/features/validation) into the Vedro testing framework, providing enhanced schema validation and error handling capabilities during test execution.
 
 ## Installation
 
@@ -16,7 +16,7 @@
 For a quick installation, you can use a plugin manager as follows:
 
 ```shell
-$ vedro plugin install vedro-valera-validator
+$ vedro plugin install vedro-d42-validator
 ```
 
 </p>
@@ -31,7 +31,7 @@ To install manually, follow these steps:
 1. Install the package using pip:
 
 ```shell
-$ pip3 install vedro-valera-validator
+$ pip3 install vedro-d42-validator
 ```
 
 2. Next, activate the plugin in your `vedro.cfg.py` configuration file:
@@ -39,13 +39,13 @@ $ pip3 install vedro-valera-validator
 ```python
 # ./vedro.cfg.py
 import vedro
-import vedro_valera_validator
+import vedro_d42_validator
 
 class Config(vedro.Config):
 
     class Plugins(vedro.Config.Plugins):
 
-        class ValeraValidator(vedro_valera_validator.ValeraValidator):
+        class D42Validator(vedro_d42_validator.D42Validator):
             enabled = True
 ```
 

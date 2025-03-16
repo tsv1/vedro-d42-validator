@@ -7,7 +7,7 @@ from unittest.mock import Mock, patch
 import pytest
 from vedro.core import Dispatcher, ExcInfo
 
-from vedro_valera_validator import ValeraValidator, ValeraValidatorPlugin
+from vedro_d42_validator import D42Validator, D42ValidatorPlugin
 
 
 @pytest.fixture()
@@ -16,8 +16,8 @@ def dispatcher() -> Dispatcher:
 
 
 @pytest.fixture()
-def validator(dispatcher: Dispatcher) -> ValeraValidatorPlugin:
-    validator = ValeraValidatorPlugin(ValeraValidator)
+def validator(dispatcher: Dispatcher) -> D42ValidatorPlugin:
+    validator = D42ValidatorPlugin(D42Validator)
     validator.subscribe(dispatcher)
     return validator
 

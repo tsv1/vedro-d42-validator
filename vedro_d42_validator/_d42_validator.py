@@ -15,11 +15,11 @@ from vedro.events import (
     ScenarioRunEvent,
 )
 
-__all__ = ("ValeraValidator", "ValeraValidatorPlugin",)
+__all__ = ("D42Validator", "D42ValidatorPlugin",)
 
 
-class ValeraValidatorPlugin(Plugin):
-    def __init__(self, config: Type["ValeraValidator"]) -> None:
+class D42ValidatorPlugin(Plugin):
+    def __init__(self, config: Type["D42Validator"]) -> None:
         super().__init__(config)
         self._eq: Any = None
 
@@ -48,5 +48,5 @@ class ValeraValidatorPlugin(Plugin):
             tb = tb.tb_next
 
 
-class ValeraValidator(PluginConfig):
-    plugin = ValeraValidatorPlugin
+class D42Validator(PluginConfig):
+    plugin = D42ValidatorPlugin

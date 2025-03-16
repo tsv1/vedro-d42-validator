@@ -1,4 +1,4 @@
-PROJECT_NAME=vedro_valera_validator
+PROJECT_NAME=vedro_d42_validator
 
 .PHONY: install
 install:

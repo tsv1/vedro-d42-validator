@@ -17,7 +17,7 @@ from vedro.events import (
     ScenarioRunEvent,
 )
 
-from vedro_valera_validator import ValeraValidator, ValeraValidatorPlugin
+from vedro_d42_validator import D42Validator, D42ValidatorPlugin
 
 from ._utils import (
     dispatcher,
@@ -33,7 +33,7 @@ __all__ = ("dispatcher", "validator",)  # fixtures
 
 def test_validator():
     with when:
-        validator = ValeraValidatorPlugin(ValeraValidator)
+        validator = D42ValidatorPlugin(D42Validator)
 
     with then:
         assert isinstance(validator, Plugin)
