@@ -5,7 +5,7 @@
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/vedro-valera-validator?style=flat-square)](https://pypi.python.org/pypi/vedro-valera-validator/)
 [![Python Version](https://img.shields.io/pypi/pyversions/vedro-valera-validator.svg?style=flat-square)](https://pypi.python.org/pypi/vedro-valera-validator/)
 
-[vedro-valera-validator](https://pypi.org/project/vedro-valera-validator/) is a plugin for the Vedro framework that utilizes the [valera validator](https://pypi.org/project/valera), a package designed for data validation based on [d42 (district42) schemas](https://d42.vedro.io/docs/quick-start). Valera validator provides a simple yet powerful approach to ensure your data aligns perfectly with your expectations.
+⚠️ This package has been renamed to [vedro-d42-validator](https://pypi.org/project/vedro-d42-validator/). The [vedro-valera-validator](https://pypi.org/project/vedro-valera-validator/) package on PyPI is no longer maintained. For updates and improvements, please use [vedro-d42-validator](https://pypi.org/project/vedro-d42-validator/) going forward.
 
 ## Installation
 
@@ -90,8 +90,4 @@ If the expected and actual results don't match, a `ValidationException` will be 
 ```shell
 ValidationException:
  - Value <class 'bytes'> at _['result'] must be equal to b'banana', but b'cucumber' given
- ```
-
-## Additional Resources
-
-For a detailed guide and further information, check out the  [documentation](https://vedro.io/docs/integrations/valera-validator).
+```
