@@ -13,7 +13,7 @@ def find_dev_required():
 
 setup(
     name="vedro-d42-validator",
-    version="1.2.1",
+    version="1.3.0",
     description="Vedro plugin for integrating d42 schema validation",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
