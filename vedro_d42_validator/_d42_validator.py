@@ -3,9 +3,9 @@ from typing import Any, Type, Union
 from d42 import ValidationException, validate_or_fail
 
 try:
-    from d42.declaration import Schema
+    from d42.declaration import GenericSchema, Schema
 except ImportError:
-    from district42.types import Schema  # type: ignore
+    from district42.types import Schema, GenericSchema  # type: ignore
 
 from vedro.core import Dispatcher, Plugin, PluginConfig
 from vedro.events import (
@@ -18,10 +18,22 @@ from vedro.events import (
 __all__ = ("D42Validator", "D42ValidatorPlugin",)
 
 
+def validate_or_fail_ne(self: GenericSchema, other: Any) -> bool:
+    try:
+        validate_or_fail(self, other)
+    except ValidationException:
+        return True
+    else:
+        raise ValidationException(
+            f"Value {type(other)} must not be equal to {self!r}, but {other!r} given"
+        )
+
+
 class D42ValidatorPlugin(Plugin):
     def __init__(self, config: Type["D42Validator"]) -> None:
         super().__init__(config)
         self._eq: Any = None
+        self._ne: Any = None
 
     def subscribe(self, dispatcher: Dispatcher) -> None:
         dispatcher.listen(ScenarioRunEvent, self.on_scenario_run) \
@@ -31,10 +43,13 @@ class D42ValidatorPlugin(Plugin):
 
     def on_scenario_run(self, event: ScenarioRunEvent) -> None:
         self._eq = Schema.__eq__
+        self._ne = Schema.__ne__
         Schema.__override__("__eq__", validate_or_fail)
+        Schema.__override__("__ne__", validate_or_fail_ne)
 
     def on_scenario_end(self, event: Union[ScenarioPassedEvent, ScenarioFailedEvent]) -> None:
         Schema.__override__("__eq__", self._eq)
+        Schema.__override__("__ne__", self._ne)
 
     def on_exception_raised(self, event: ExceptionRaisedEvent) -> None:
         if event.exc_info.type is not ValidationException:

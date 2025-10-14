@@ -18,6 +18,7 @@ from vedro.events import (
 )
 
 from vedro_d42_validator import D42Validator, D42ValidatorPlugin
+from vedro_d42_validator._d42_validator import validate_or_fail_ne
 
 from ._utils import (
     dispatcher,
@@ -50,7 +51,8 @@ async def test_scenario_run_event(*, dispatcher: Dispatcher):
 
     with then:
         assert mock.mock_calls == [
-            call("__eq__", validate_or_fail)
+            call("__eq__", validate_or_fail),
+            call("__ne__", validate_or_fail_ne)
         ]
 
 
@@ -68,7 +70,8 @@ async def test_scenario_end_event(event_class, *, dispatcher: Dispatcher):
 
     with then:
         assert mock.mock_calls == [
-            call("__eq__", Schema.__eq__)
+            call("__eq__", Schema.__eq__),
+            call("__ne__", Schema.__ne__)
         ]
 
 
